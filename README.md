@@ -39,7 +39,7 @@ pip install boto3 faker
    Generate 100 dummy records, insert them into the specified DynamoDB table.
 
    ```bash
-   python script_name.py --table_name YourDynamoDBTableName --num_records 100  --profile your_aws_profile
+   python main.py --table_name YourDynamoDBTableName --num_records 100  --profile your_aws_profile
    ```
 
    If you don't specify an AWS profile, the default profile will be used.
@@ -49,7 +49,7 @@ pip install boto3 faker
    Generate 100 dummy records, and output the records to a JSON file.
 
    ```bash
-   python script_name.py --table_name YourDynamoDBTableName --num_records 100 --output_json dummy_records.json --profile your_aws_profile
+   python main.py --table_name YourDynamoDBTableName --num_records 100 --output_json dummy_records.json --profile your_aws_profile
    ```
 
    If you don't specify an AWS profile, the default profile will be used.
@@ -59,7 +59,7 @@ pip install boto3 faker
    Insert records from a JSON file into the specified DynamoDB table.
 
    ```bash
-   python script_name.py YourDynamoDBTableName --input_json dummy_records.json --profile your_aws_profile
+   python main.py YourDynamoDBTableName --input_json dummy_records.json --profile your_aws_profile
    ```
 
    This reads the records from `dummy_records.json` and inserts them into `YourDynamoDBTableName` using the specified AWS profile.
