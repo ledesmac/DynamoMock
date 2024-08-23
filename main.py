@@ -30,20 +30,22 @@ def generate_dummy_data():
     }
 
 def create_dummy_records(table_name, num_records, output_json=None, profile=None):
-    session = boto3.Session(profile_name=profile) if profile else boto3.Session()
-    dynamodb = session.client('dynamodb')
     items = []
 
     for _ in range(num_records):
         item = generate_dummy_data()
         items.append(item)
-        dynamodb.put_item(TableName=table_name, Item=item)
-        print(f"Inserted item: {item}")
 
     if output_json:
         with open(output_json, 'w') as json_file:
             json.dump(items, json_file, indent=4)
         print(f"Dummy records written to {output_json}")
+    else:
+        session = boto3.Session(profile_name=profile) if profile else boto3.Session()
+        dynamodb = session.client('dynamodb')
+        for item in items:
+            dynamodb.put_item(TableName=table_name, Item=item)
+            print(f"Inserted item: {item}")
 
 def load_records_from_json(table_name, input_json, profile=None):
     session = boto3.Session(profile_name=profile) if profile else boto3.Session()
@@ -58,7 +60,7 @@ def load_records_from_json(table_name, input_json, profile=None):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate and insert dummy records into DynamoDB or from JSON.")
-    parser.add_argument("table_name", help="(Mandatory) Name of the DynamoDB table.")
+    parser.add_argument("--table_name", required=True, help="(Mandatory) Name of the DynamoDB table.")
     parser.add_argument("--num_records", type=int, help="(Optional) Number of dummy records to generate.")
     parser.add_argument("--output_json", help="(Optional) File path to output the generated dummy records as JSON.")
     parser.add_argument("--input_json", help="(Optional) File path to JSON file containing records to be added to DynamoDB.")
