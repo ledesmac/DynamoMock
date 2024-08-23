@@ -60,7 +60,7 @@ def load_records_from_json(table_name, input_json, profile=None):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate and insert dummy records into DynamoDB or from JSON.")
-    parser.add_argument("--table_name", required=True, help="(Mandatory) Name of the DynamoDB table.")
+    parser.add_argument("--table_name", required=True, help="(Required) Name of the DynamoDB table.")
     parser.add_argument("--num_records", type=int, help="(Optional) Number of dummy records to generate.")
     parser.add_argument("--output_json", help="(Optional) File path to output the generated dummy records as JSON.")
     parser.add_argument("--input_json", help="(Optional) File path to JSON file containing records to be added to DynamoDB.")

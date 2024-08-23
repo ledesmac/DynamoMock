@@ -26,7 +26,7 @@ pip install boto3 faker
 
 ### Command-Line Arguments
 
-- `table_name` (Mandatory): The name of the DynamoDB table where records will be inserted.
+- `--table_name` (Required): The name of the DynamoDB table where records will be inserted.
 - `--num_records` (Optional): The number of dummy records to generate.
 - `--output_json` (Optional): The file path to save the generated dummy records in JSON format.
 - `--input_json` (Optional): The file path to a JSON file containing records to be inserted into DynamoDB.
@@ -36,15 +36,25 @@ pip install boto3 faker
 
 1. **Generate and Insert Dummy Records**
 
-   Generate 100 dummy records, insert them into the specified DynamoDB table, and optionally output the records to a JSON file.
+   Generate 100 dummy records, insert them into the specified DynamoDB table.
 
    ```bash
-   python script_name.py YourDynamoDBTableName --num_records 100 --output_json dummy_records.json --profile your_aws_profile
+   python script_name.py --table_name YourDynamoDBTableName --num_records 100  --profile your_aws_profile
    ```
 
    If you don't specify an AWS profile, the default profile will be used.
 
-2. **Insert Records from JSON**
+2. **Generate and Export Dummy Records to JSON**
+
+   Generate 100 dummy records, and output the records to a JSON file.
+
+   ```bash
+   python script_name.py --table_name YourDynamoDBTableName --num_records 100 --output_json dummy_records.json --profile your_aws_profile
+   ```
+
+   If you don't specify an AWS profile, the default profile will be used.
+
+3. **Insert Records from JSON**
 
    Insert records from a JSON file into the specified DynamoDB table.
 
