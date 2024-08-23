@@ -69,19 +69,19 @@ pip install boto3 faker
 1. **Generate 50 Dummy Records and Insert into DynamoDB**
 
    ```bash
-   python script_name.py MyDynamoDBTable --num_records 50
+   python script_name.py --table_name MyDynamoDBTable --num_records 50
    ```
 
 2. **Generate 10 Dummy Records, Output to JSON, and Insert into DynamoDB**
 
    ```bash
-   python script_name.py MyDynamoDBTable --num_records 10 --output_json my_dummy_data.json
+   python script_name.py --table_name MyDynamoDBTable --num_records 10 --output_json my_dummy_data.json
    ```
 
 3. **Load Records from JSON and Insert into DynamoDB**
 
    ```bash
-   python script_name.py MyDynamoDBTable --input_json my_dummy_data.json
+   python script_name.py --table_name MyDynamoDBTable --input_json my_dummy_data.json
    ```
 
 ## Example Record Structure
